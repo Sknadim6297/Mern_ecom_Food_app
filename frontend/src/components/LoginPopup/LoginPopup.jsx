@@ -1,6 +1,5 @@
 import React, { useContext,useState } from 'react'
 import './LoginPopup.css'
-
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext';
 import axios from 'axios';
@@ -8,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const LoginPopup = ({setShowLogin}) => {
     
-    const{setToken}=useContext(StoreContext);
+    const{setToken,url}=useContext(StoreContext);
 
     const [currState,setCurrState] = useState("Sign Up");
     const [data,setData] = useState({
@@ -25,7 +24,7 @@ const LoginPopup = ({setShowLogin}) => {
      
     const onLogin= async(event)=>{
         event.preventDefault();
-        const response=await axios.post('http://localhost:4000/api/user/login',data);
+        const response=await axios.post(url+'api/user/login',data);
         if(response.data.success){
             setToken(response.data.token);
             localStorage.setItem('token',response.data.token);
@@ -39,7 +38,7 @@ const LoginPopup = ({setShowLogin}) => {
     }
     const onRegister = async (event) => {
         event.preventDefault();
-        const response = await axios.post('http://localhost:4000/api/user/register', data);
+        const response = await axios.post(url+'api/user/lregister', data);
         console.log(response);
         
 
