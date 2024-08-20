@@ -10,7 +10,7 @@ const StoreContextProvider = (props) => {
     const [ordersData, setOrdersData] = useState({});
     const [token, setToken] = useState(''); 
     const [food_list, setFood_list]=useState([]);
-    const url='http://localhost:4000/'
+    const url='https://mern-ecom-food-app-5.onrender.com/'
 
     const addToCart = async (itemId) => {
         setCartItems((prev) => ({
